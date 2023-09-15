@@ -31,4 +31,22 @@ const sortAndRemoveDuplicates = (array) => {
   return sortedArray;
 };
 
-export { buildTreeRec, sortAndRemoveDuplicates };
+const prettyPrintRec = (node, prefix = "", isLeft = true) => {
+  if (node === null) {
+    return;
+  }
+  if (node.rightNode !== null) {
+    prettyPrintRec(
+      node.rightNode,
+      `${prefix}${isLeft ? "│   " : "    "}`,
+      false,
+    );
+  }
+
+  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+  if (node.leftNode !== null) {
+    prettyPrintRec(node.leftNode, `${prefix}${isLeft ? "    " : "│   "}`, true);
+  }
+};
+
+export { buildTreeRec, sortAndRemoveDuplicates, prettyPrintRec };

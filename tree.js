@@ -1,5 +1,9 @@
-// eslint-disable-next-line import/extensions
-import { buildTreeRec, sortAndRemoveDuplicates } from "./utility.js";
+/* eslint-disable import/extensions */
+import {
+  buildTreeRec,
+  sortAndRemoveDuplicates,
+  prettyPrintRec,
+} from "./utility.js";
 
 const Tree = (array) => {
   let root = null;
@@ -8,7 +12,11 @@ const Tree = (array) => {
     root = buildTreeRec(sortAndRemoveDuplicates(array));
   };
 
-  return { buildTree };
+  const prettyPrint = () => {
+    prettyPrintRec(root);
+  };
+
+  return { buildTree, prettyPrint };
 };
 
 export default Tree;
