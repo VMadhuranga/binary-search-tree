@@ -46,6 +46,64 @@ const insertRec = (value, node) => {
   return node;
 };
 
+const removeRec = (value, node) => {
+  if (node === null) {
+    return node;
+  }
+
+  if (
+    value === node.data &&
+    node.leftNode === null &&
+    node.rightNode === null
+  ) {
+    node = null;
+    return node;
+  }
+
+  if (value === node.data && node.leftNode === null) {
+    node = node.rightNode;
+    return node;
+  }
+
+  if (value === node.data && node.rightNode === null) {
+    node = node.leftNode;
+    return node;
+  }
+
+  if (
+    value === node.data &&
+    node.leftNode !== null &&
+    node.rightNode !== null
+  ) {
+    let successor = node.rightNode;
+    let previousSuccessor = null;
+
+    while (successor.leftNode !== null) {
+      previousSuccessor = successor;
+      successor = previousSuccessor.leftNode;
+    }
+
+    if (successor === node.rightNode) {
+      successor.leftNode = node.leftNode;
+    } else {
+      previousSuccessor.leftNode = successor.rightNode;
+      successor.leftNode = node.leftNode;
+      successor.rightNode = node.rightNode;
+    }
+
+    node = successor;
+    return node;
+  }
+
+  if (value < node.data) {
+    node.leftNode = removeRec(value, node.leftNode);
+  } else if (value > node.data) {
+    node.rightNode = removeRec(value, node.rightNode);
+  }
+
+  return node;
+};
+
 const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
@@ -64,4 +122,10 @@ const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   }
 };
 
-export { buildTreeRec, sortAndRemoveDuplicates, insertRec, prettyPrintRec };
+export {
+  buildTreeRec,
+  sortAndRemoveDuplicates,
+  insertRec,
+  removeRec,
+  prettyPrintRec,
+};

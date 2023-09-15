@@ -9,4 +9,8 @@ BST.buildTree();
 BST.insert(1000);
 BST.insert(24);
 
+BST.remove(1);
+BST.remove(67);
+BST.remove(6345);
+
 BST.prettyPrint();

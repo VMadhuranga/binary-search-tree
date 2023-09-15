@@ -4,6 +4,7 @@ import {
   sortAndRemoveDuplicates,
   prettyPrintRec,
   insertRec,
+  removeRec,
 } from "./utility.js";
 
 const Tree = (array) => {
@@ -17,11 +18,15 @@ const Tree = (array) => {
     root = insertRec(value, root);
   };
 
+  const remove = (value) => {
+    root = removeRec(value, root);
+  };
+
   const prettyPrint = () => {
     prettyPrintRec(root);
   };
 
-  return { buildTree, insert, prettyPrint };
+  return { buildTree, insert, remove, prettyPrint };
 };
 
 export default Tree;
