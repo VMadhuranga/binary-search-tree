@@ -3,6 +3,7 @@ import {
   buildTreeRec,
   sortAndRemoveDuplicates,
   prettyPrintRec,
+  insertRec,
 } from "./utility.js";
 
 const Tree = (array) => {
@@ -12,11 +13,15 @@ const Tree = (array) => {
     root = buildTreeRec(sortAndRemoveDuplicates(array));
   };
 
+  const insert = (value) => {
+    root = insertRec(value, root);
+  };
+
   const prettyPrint = () => {
     prettyPrintRec(root);
   };
 
-  return { buildTree, prettyPrint };
+  return { buildTree, insert, prettyPrint };
 };
 
 export default Tree;

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // eslint-disable-next-line import/extensions
 import Node from "./node.js";
 
@@ -31,6 +32,20 @@ const sortAndRemoveDuplicates = (array) => {
   return sortedArray;
 };
 
+const insertRec = (value, node) => {
+  if (node === null) {
+    return Node(value);
+  }
+
+  if (value < node.data) {
+    node.leftNode = insertRec(value, node.leftNode);
+  } else if (value > node.data) {
+    node.rightNode = insertRec(value, node.rightNode);
+  }
+
+  return node;
+};
+
 const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
@@ -49,4 +64,4 @@ const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   }
 };
 
-export { buildTreeRec, sortAndRemoveDuplicates, prettyPrintRec };
+export { buildTreeRec, sortAndRemoveDuplicates, insertRec, prettyPrintRec };
