@@ -104,6 +104,22 @@ const removeRec = (value, node) => {
   return node;
 };
 
+const findRec = (value, node) => {
+  if (value === node?.data) {
+    return node;
+  }
+
+  if (value < node?.data) {
+    return findRec(value, node.leftNode);
+  }
+
+  if (value > node?.data) {
+    return findRec(value, node.rightNode);
+  }
+
+  return null;
+};
+
 const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
@@ -127,5 +143,6 @@ export {
   sortAndRemoveDuplicates,
   insertRec,
   removeRec,
+  findRec,
   prettyPrintRec,
 };

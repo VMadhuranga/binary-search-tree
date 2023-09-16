@@ -13,4 +13,9 @@ BST.remove(1);
 BST.remove(67);
 BST.remove(6345);
 
+BST.find("aaa");
+BST.find();
+BST.find(1500);
+BST.find(23);
+
 BST.prettyPrint();
