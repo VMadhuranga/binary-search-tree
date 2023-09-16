@@ -138,6 +138,11 @@ const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   }
 };
 
+// a function for to check level order callback parameter
+function plusOne(value) {
+  return value + 1;
+}
+
 export {
   buildTreeRec,
   sortAndRemoveDuplicates,
@@ -145,4 +150,5 @@ export {
   removeRec,
   findRec,
   prettyPrintRec,
+  plusOne,
 };
