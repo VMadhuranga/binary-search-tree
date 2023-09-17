@@ -187,6 +187,18 @@ const postOrderRec = (node, dataContainer, callback) => {
   }
 };
 
+const heightRec = (node, counter = 0) => {
+  if (node === null || (node.leftNode === null && node.rightNode === null)) {
+    return counter;
+  }
+
+  const leftNodeHeight = heightRec(node.leftNode, counter + 1);
+  const rightNodeHeight = heightRec(node.rightNode, counter + 1);
+
+  if (leftNodeHeight > rightNodeHeight) return leftNodeHeight;
+  return rightNodeHeight;
+};
+
 const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
@@ -220,6 +232,7 @@ export {
   preOrderRec,
   inOrderRec,
   postOrderRec,
+  heightRec,
   prettyPrintRec,
   plusOne,
 };

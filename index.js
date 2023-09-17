@@ -31,4 +31,8 @@ BST.inOrder();
 // BST.postOrder();
 BST.postOrder(plusOne);
 
+BST.height();
+// BST.height(324);
+// BST.height(67);
+
 BST.prettyPrint();
