@@ -120,6 +120,52 @@ const findRec = (value, node) => {
   return null;
 };
 
+const preOrderRec = (node, dataContainer, callback) => {
+  if (node === null) {
+    return;
+  }
+
+  if (callback instanceof Function) {
+    dataContainer.push(callback(node));
+  } else {
+    dataContainer.push(node.data);
+  }
+
+  preOrderRec(node.leftNode, dataContainer, callback);
+  preOrderRec(node.rightNode, dataContainer, callback);
+};
+
+const inOrderRec = (node, dataContainer, callback) => {
+  if (node === null) {
+    return;
+  }
+
+  inOrderRec(node.leftNode, dataContainer, callback);
+
+  if (callback instanceof Function) {
+    dataContainer.push(callback(node));
+  } else {
+    dataContainer.push(node.data);
+  }
+
+  inOrderRec(node.rightNode, dataContainer, callback);
+};
+
+const postOrderRec = (node, dataContainer, callback) => {
+  if (node === null) {
+    return;
+  }
+
+  postOrderRec(node.leftNode, dataContainer, callback);
+  postOrderRec(node.rightNode, dataContainer, callback);
+
+  if (callback instanceof Function) {
+    dataContainer.push(callback(node));
+  } else {
+    dataContainer.push(node.data);
+  }
+};
+
 const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
@@ -140,7 +186,7 @@ const prettyPrintRec = (node, prefix = "", isLeft = true) => {
 
 // a function for to check level order callback parameter
 function plusOne(value) {
-  return value + 1;
+  return value.data + 1;
 }
 
 export {
@@ -149,6 +195,9 @@ export {
   insertRec,
   removeRec,
   findRec,
+  preOrderRec,
+  inOrderRec,
+  postOrderRec,
   prettyPrintRec,
   plusOne,
 };

@@ -1,6 +1,6 @@
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
 import Tree from "./tree.js";
-// import { plusOne } from "./utility.js";
+import { plusOne } from "./utility.js";
 
 const testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
@@ -21,5 +21,14 @@ BST.find(23);
 
 BST.levelOrder();
 // BST.levelOrder(plusOne);
+
+BST.preOrder();
+// BST.preOrder(plusOne);
+
+BST.inOrder();
+// BST.inOrder(plusOne);
+
+// BST.postOrder();
+BST.postOrder(plusOne);
 
 BST.prettyPrint();

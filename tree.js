@@ -6,6 +6,9 @@ import {
   insertRec,
   removeRec,
   findRec,
+  preOrderRec,
+  inOrderRec,
+  postOrderRec,
 } from "./utility.js";
 
 const Tree = (array) => {
@@ -38,7 +41,7 @@ const Tree = (array) => {
 
     while (queue.length > 0) {
       if (callback instanceof Function) {
-        dataContainer.push(callback(queue[0].data));
+        dataContainer.push(callback(queue[0]));
       } else {
         dataContainer.push(queue[0].data);
       }
@@ -51,11 +54,39 @@ const Tree = (array) => {
     console.log(dataContainer);
   };
 
+  const preOrder = (callback = null) => {
+    const dataContainer = [];
+    preOrderRec(root, dataContainer, callback);
+    console.log(dataContainer);
+  };
+
+  const inOrder = (callback = null) => {
+    const dataContainer = [];
+    inOrderRec(root, dataContainer, callback);
+    console.log(dataContainer);
+  };
+
+  const postOrder = (callback = null) => {
+    const dataContainer = [];
+    postOrderRec(root, dataContainer, callback);
+    console.log(dataContainer);
+  };
+
   const prettyPrint = () => {
     prettyPrintRec(root);
   };
 
-  return { buildTree, insert, remove, find, levelOrder, prettyPrint };
+  return {
+    buildTree,
+    insert,
+    remove,
+    find,
+    levelOrder,
+    preOrder,
+    inOrder,
+    postOrder,
+    prettyPrint,
+  };
 };
 
 export default Tree;
