@@ -6,6 +6,7 @@ import {
   insertRec,
   removeRec,
   findRec,
+  levelOrderIter,
   preOrderRec,
   inOrderRec,
   postOrderRec,
@@ -31,26 +32,8 @@ const Tree = (array) => {
   };
 
   const levelOrder = (callback = null) => {
-    if (root === null) {
-      return;
-    }
-
-    const queue = [];
     const dataContainer = [];
-    queue.push(root);
-
-    while (queue.length > 0) {
-      if (callback instanceof Function) {
-        dataContainer.push(callback(queue[0]));
-      } else {
-        dataContainer.push(queue[0].data);
-      }
-
-      if (queue[0].leftNode !== null) queue.push(queue[0].leftNode);
-      if (queue[0].rightNode !== null) queue.push(queue[0].rightNode);
-      queue.shift();
-    }
-
+    levelOrderIter(root, dataContainer, callback);
     console.log(dataContainer);
   };
 

@@ -120,6 +120,27 @@ const findRec = (value, node) => {
   return null;
 };
 
+const levelOrderIter = (node, dataContainer, callback) => {
+  if (node === null) {
+    return;
+  }
+
+  const queue = [];
+  queue.push(node);
+
+  while (queue.length > 0) {
+    if (callback instanceof Function) {
+      dataContainer.push(callback(queue[0]));
+    } else {
+      dataContainer.push(queue[0].data);
+    }
+
+    if (queue[0].leftNode !== null) queue.push(queue[0].leftNode);
+    if (queue[0].rightNode !== null) queue.push(queue[0].rightNode);
+    queue.shift();
+  }
+};
+
 const preOrderRec = (node, dataContainer, callback) => {
   if (node === null) {
     return;
@@ -195,6 +216,7 @@ export {
   insertRec,
   removeRec,
   findRec,
+  levelOrderIter,
   preOrderRec,
   inOrderRec,
   postOrderRec,
