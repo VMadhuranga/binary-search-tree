@@ -80,6 +80,14 @@ const Tree = (array) => {
     console.log(checkTreeBalance(root));
   };
 
+  const reBalance = () => {
+    const rebalancedArray = [];
+    if (!checkTreeBalance(root)) {
+      inOrderRec(root, rebalancedArray);
+      root = buildTreeRec(rebalancedArray);
+    }
+  };
+
   const prettyPrint = () => {
     prettyPrintRec(root);
   };
@@ -96,6 +104,7 @@ const Tree = (array) => {
     height,
     depth,
     isBalanced,
+    reBalance,
     prettyPrint,
   };
 };

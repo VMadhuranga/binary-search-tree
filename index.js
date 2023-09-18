@@ -41,4 +41,6 @@ BST.depth(5);
 
 BST.isBalanced();
 
+BST.reBalance();
+
 BST.prettyPrint();
