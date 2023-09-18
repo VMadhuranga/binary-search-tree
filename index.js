@@ -35,4 +35,8 @@ BST.height();
 // BST.height(324);
 // BST.height(67);
 
+BST.depth(5);
+// BST.depth();
+// BST.depth("aaa");
+
 BST.prettyPrint();

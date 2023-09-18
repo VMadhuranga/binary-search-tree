@@ -11,6 +11,7 @@ import {
   inOrderRec,
   postOrderRec,
   heightRec,
+  depthRec,
 } from "./utility.js";
 
 const Tree = (array) => {
@@ -66,6 +67,14 @@ const Tree = (array) => {
     }
   };
 
+  const depth = (value) => {
+    if (findRec(value, root)) {
+      console.log(depthRec(root, findRec(value, root)));
+    } else {
+      console.log(findRec(value, root));
+    }
+  };
+
   const prettyPrint = () => {
     prettyPrintRec(root);
   };
@@ -80,6 +89,7 @@ const Tree = (array) => {
     inOrder,
     postOrder,
     height,
+    depth,
     prettyPrint,
   };
 };

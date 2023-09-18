@@ -199,6 +199,18 @@ const heightRec = (node, counter = 0) => {
   return rightNodeHeight;
 };
 
+const depthRec = (root, node, counter = 0) => {
+  if (root === null || root === node) {
+    return counter;
+  }
+
+  const leftNodeHeight = depthRec(root.leftNode, node, counter + 1);
+  const rightNodeHeight = depthRec(root.rightNode, node, counter + 1);
+
+  if (root.data > node.data) return leftNodeHeight;
+  return rightNodeHeight;
+};
+
 const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
@@ -233,6 +245,7 @@ export {
   inOrderRec,
   postOrderRec,
   heightRec,
+  depthRec,
   prettyPrintRec,
   plusOne,
 };
