@@ -12,6 +12,7 @@ import {
   postOrderRec,
   heightRec,
   depthRec,
+  checkTreeBalance,
 } from "./utility.js";
 
 const Tree = (array) => {
@@ -75,6 +76,10 @@ const Tree = (array) => {
     }
   };
 
+  const isBalanced = () => {
+    console.log(checkTreeBalance(root));
+  };
+
   const prettyPrint = () => {
     prettyPrintRec(root);
   };
@@ -90,6 +95,7 @@ const Tree = (array) => {
     postOrder,
     height,
     depth,
+    isBalanced,
     prettyPrint,
   };
 };

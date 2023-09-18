@@ -211,6 +211,19 @@ const depthRec = (root, node, counter = 0) => {
   return rightNodeHeight;
 };
 
+const checkTreeBalance = (node) => {
+  if (node === null) return null;
+
+  const leftSubTreeHeight = heightRec(node.leftNode);
+  const rightSubTreeHeight = heightRec(node.rightNode);
+
+  return (
+    leftSubTreeHeight === rightSubTreeHeight ||
+    leftSubTreeHeight - rightSubTreeHeight === 1 ||
+    rightSubTreeHeight - leftSubTreeHeight === 1
+  );
+};
+
 const prettyPrintRec = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
@@ -246,6 +259,7 @@ export {
   postOrderRec,
   heightRec,
   depthRec,
+  checkTreeBalance,
   prettyPrintRec,
   plusOne,
 };
