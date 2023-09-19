@@ -34,6 +34,7 @@ const sortAndRemoveDuplicates = (array) => {
 
 const insertRec = (value, node) => {
   if (node === null) {
+    console.log(`${value} inserted`);
     return Node(value);
   }
 
@@ -57,16 +58,19 @@ const removeRec = (value, node) => {
     node.rightNode === null
   ) {
     node = null;
+    console.log(`${value} removed`);
     return node;
   }
 
   if (value === node.data && node.leftNode === null) {
     node = node.rightNode;
+    console.log(`${value} removed`);
     return node;
   }
 
   if (value === node.data && node.rightNode === null) {
     node = node.leftNode;
+    console.log(`${value} removed`);
     return node;
   }
 
@@ -92,6 +96,7 @@ const removeRec = (value, node) => {
     }
 
     node = successor;
+    console.log(`${value} removed`);
     return node;
   }
 

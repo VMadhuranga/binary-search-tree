@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable import/extensions */
 import {
   buildTreeRec,
@@ -20,6 +21,7 @@ const Tree = (array) => {
 
   const buildTree = () => {
     root = buildTreeRec(sortAndRemoveDuplicates(array));
+    console.log("Tree was build");
   };
 
   const insert = (value) => {
@@ -31,6 +33,10 @@ const Tree = (array) => {
   };
 
   const find = (value) => {
+    if (!findRec(value, root)) {
+      console.log("Node not found");
+      return;
+    }
     console.log(findRec(value, root));
   };
 
@@ -64,7 +70,7 @@ const Tree = (array) => {
     } else if (value === null) {
       console.log(heightRec(root));
     } else {
-      console.log(findRec(value, root));
+      console.log("Node not found");
     }
   };
 
@@ -72,12 +78,16 @@ const Tree = (array) => {
     if (findRec(value, root)) {
       console.log(depthRec(root, findRec(value, root)));
     } else {
-      console.log(findRec(value, root));
+      console.log("Node not found");
     }
   };
 
   const isBalanced = () => {
-    console.log(checkTreeBalance(root));
+    if (checkTreeBalance(root)) {
+      console.log("Tree is balanced");
+    } else {
+      console.log("Tree is unbalanced");
+    }
   };
 
   const reBalance = () => {
